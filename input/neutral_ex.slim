@@ -1,0 +1,40 @@
+// set up a simple neutral simulation
+initialize() {
+	// set overall mutation rate
+	initializeMutationRate(1e-7);
+	
+	// m1 mutation type: neutral
+	initializeMutationType("m1", 0.5, "f", 0.0);
+	
+	// m2 mutation type: less common beneficial mutations (s=0.01)
+	initializeMutationType("m2", 0.5, "f", 0.01);
+	
+	// g1 genomic element type: uses m1 for all mutations
+	initializeGenomicElementType("g1", c(m1,m2), c(1.0, 0.01));
+	
+	// uniform chromosome of length 100 kb with uniform recombination
+	initializeGenomicElement(g1, 0, 99999);
+	initializeRecombinationRate(1e-8);
+}
+
+// create 2 subpops of 500 individuals, set migration rates
+
+1 early() {
+	sim.addSubpop("p1", 500);
+	sim.addSubpop("p2", 500);
+	p1.setMigrationRates(p2, 0.01);
+	p2.setMigrationRates(p1, 0.01);
+	
+}
+
+// when generating an output, want to use late() so get output of sim
+// after the main events of specified tick have occured
+
+
+
+// run to tick 10000, generate an output
+10000 late()
+{
+	p1.outputSample(10);
+}
+

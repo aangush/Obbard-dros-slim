@@ -1,0 +1,43 @@
+
+// initialize a simulation
+initialize()
+
+{
+	// Turn on tree sequences. Here, simplification ratio and interval can be customized
+	initializeTreeSeq();
+
+	// set overall mutation rate
+	initializeMutationRate(2.5e-9);
+	
+	// set m1 mutation type: dominance coeff = 0.5, fitness effects drawn from gamma 				  	distribution
+	// the two numbers after "g" indicate the mean and shape parameters (respectively) of the            	gamma distribution
+	initializeMutationType("m1", 0.5, "g", -0.03, 0.2);
+	
+	// g1 genomic element type: all mutations are m1 mutations
+	initializeGenomicElementType("g1", m1, 1.0);
+	
+	// create one uniform chromosome of length 100 kb
+	initializeGenomicElement(g1, 0, 99999);
+	
+	// uniform recomb rate along the chromosome
+	initializeRecombinationRate(4e-8);
+	
+}
+
+// create a population of 10k individuals
+1 early()
+
+{
+	sim.addSubpop("p1", 10000);
+}
+
+// run to tick 500 (can set this later) -- scaling?
+500 late()
+
+{
+	// Specify treeseq output format, output file location
+	sim.treeSeqOutput("./slim1_euro_trees.trees");
+}
+
+	
+	
