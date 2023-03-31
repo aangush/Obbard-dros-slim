@@ -22,6 +22,9 @@ initialize()
 	// uniform recomb rate along the chromosome
 	initializeRecombinationRate(4e-8);
 	
+	// enable separate sexes (can model X or Y chrom later)
+	initializeSex("A");
+	
 }
 
 // create a population of 10k individuals
@@ -31,12 +34,12 @@ initialize()
 	sim.addSubpop("p1", 10000);
 }
 
-// run to tick 500 (can set this later) -- scaling?
+// run to tick 500 (can set this later)
 500 late()
 
 {
-	// Specify treeseq output format, output file location
-	sim.treeSeqOutput("./slim1_euro_trees.trees");
+	// save full output of euro sim (WF)
+	sim.outputFull("C://Users/aangu/Documents/Obbard_proj/output/euro_out.txt");
 }
 
 	
