@@ -38,8 +38,9 @@ initialize()
 500 late()
 
 {
-	// save full output of euro sim (WF)
+	// save full output of euro sim, save euro treeseq output
 	sim.outputFull("C://Users/aangu/Documents/Obbard_proj/output/euro_out.txt");
+	sim.treeSeqOutput("C://Users/aangu/Documents/Obbard_proj/output/euro_trees.trees");
 }
 
 	
