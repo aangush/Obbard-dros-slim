@@ -1,0 +1,45 @@
+initialize() 
+{
+
+initializeSLiMModelType("nonWF");
+initializeTreeSeq();
+defineConstant("K", 40);
+initializeMutationType("m1", 0.5, "f", 0.0);
+m1.convertToSubstitution = T;
+initializeGenomicElementType("g1", m1, 1.0);
+initializeGenomicElement(g1, 0, 99999);
+initializeMutationRate(2.5e-9);
+initializeRecombinationRate(4e-8);
+initializeSex("A");
+
+}
+
+reproduction() 
+{
+	females = p1.sampleIndividuals(1, sex = "F");
+	males = p1.sampleIndividuals(1, sex = "M");
+	subpop.addCrossed(females, males, sex = NULL);
+}
+
+1 early() 
+{
+	sim.addSubpop("p1", 10);
+	
+}
+
+early() 
+{
+	p1.fitnessScaling = K / p1.individualCount;
+}
+
+late() 
+{
+	from_euro = sim.readFromPopulationFile("C://Users/aangu/Documents/Obbard_proj/output/euro_trees.trees");
+	inds = p1.individuals;
+	catn(sim.cycle + ": " + size(inds) + " (" + max(inds.age) + ")");
+}
+
+2 late() 
+{
+	sim.outputFull(ages=T);
+}

@@ -38,9 +38,14 @@ initialize()
 500 late()
 
 {
+	// take a sample of 1000 individuals
+	// euro_sample = p1.sampleIndividuals(1000);
+	
 	// save full output of euro sim, save euro treeseq output
+	
 	sim.outputFull("C://Users/aangu/Documents/Obbard_proj/output/euro_out.txt");
-	sim.treeSeqOutput("C://Users/aangu/Documents/Obbard_proj/output/euro_trees.trees");
+	
+	sim.treeSeqOutput("C://Users/aangu/Documents/Obbard_proj/output/euro_trees.trees", 		includeModel = F);
 }
 
 	
