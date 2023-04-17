@@ -1,6 +1,6 @@
+
 initialize() 
 {
-
 initializeSLiMModelType("nonWF");
 initializeTreeSeq();
 initializeSex("A");
@@ -10,33 +10,21 @@ initializeGenomicElementType("g1", m1, 1.0);
 initializeGenomicElement(g1, 0, 99999);
 initializeMutationRate(2.5e-9);
 initializeRecombinationRate(4e-8);
-
 }
 
-reproduction(NULL, "F") 
-{
-subpop.addCrossed(individual, subpop.sampleIndividuals(1, sex="M"));
+reproduction() {
+subpop.addCrossed(individual, subpop.sampleIndividuals(1));
 }
-
-1 early() 
-{
-	sim.readFromPopulationFile("C://Users/aangu/Documents/Obbard_proj/output/euro_trees.trees");
-	
+1 early() {
+sim.addSubpop("p1", 10);
 }
-
-early() 
-{
-	p1.fitnessScaling = 10000 / p1.individualCount;
+early() {
+p1.fitnessScaling = K / p1.individualCount;
 }
-
-late() 
-{
-	
-	inds = p1.individuals;
-	catn(sim.cycle + ": " + size(inds) + " (" + max(inds.age) + ")");
+late() {
+inds = p1.individuals;
+catn(sim.cycle + ": " + size(inds) + " (" + max(inds.age) + ")");
 }
-
-200 late() 
-{
-	sim.outputFull(ages=T);
+2000 late() {
+sim.outputFull(ages=T);
 }
