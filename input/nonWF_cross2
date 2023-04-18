@@ -1,4 +1,4 @@
-
+// DO NOT RUN THIS, IT WILL CRASH SLiM
 initialize() 
 {
 initializeSLiMModelType("nonWF");
@@ -13,7 +13,7 @@ initializeRecombinationRate(4e-8);
 }
 
 reproduction() {
-subpop.addCrossed(individual, subpop.sampleIndividuals(1));
+subpop.addCrossed(subpop.sampleIndividuals(1, sex="F"), subpop.sampleIndividuals(1, sex="M"));
 }
 
 1 early() {
@@ -26,6 +26,6 @@ catn(sim.cycle + ": " + size(inds) + " (" + max(inds.age) + ")");
 sim.outputFull();
 }
 
-2000 late() {
+20 late() {
 sim.outputFull(ages=T);
 }
