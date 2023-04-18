@@ -6,8 +6,9 @@ ts = tskit.load("euro_trees.trees")
 # unpack tree seqs to modifiable tables, necessary bc tree sequences are by default immutable
 tables = ts.dump_tables()
 
-# annotate the tables in a nonWF-style as SLiM expects for nonWF simulations
-pyslim.annotate_tables(tables, model_type="nonWF", tick=1)
+# annotate the tables in a nonWF-style as SLiM expects for nonWF simulations,
+# don't replace old mutations (annotate_mutations)
+pyslim.annotate_tables(tables, model_type="nonWF", tick=1, annotate_mutations=False)
 
 # randomly assign sexes to each individual (might not be necessary because the euro sim includes sexes?)
 individual_metadata = [ind.metadata for ind in tables.individuals]
