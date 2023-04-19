@@ -25,9 +25,10 @@ for (i in 1:10)
 1 early() {
 sim.readFromPopulationFile("C://Users/aangu/Documents/Obbard_proj/output/euro_processed.trees");
 
+
 sim.addSubpop("p2", p1.sampleIndividuals(1, sex="F"));
 sim.addSubpop("p3", p1.sampleIndividuals(1, sex="M"));
-sim.addSubpop("p4", 0)
+sim.addSubpop("p4", 0);
 }
 
 late() {
