@@ -1,4 +1,4 @@
-import pyslim, random, tskit
+import pyslim, tskit
 
 # load the WF euro tree sequences
 ts = tskit.load("euro_trees.trees")
@@ -10,17 +10,18 @@ tables = ts.dump_tables()
 # don't replace old mutations (annotate_mutations)
 pyslim.annotate_tables(tables, model_type="nonWF", tick=1, annotate_mutations=False)
 
-# randomly assign sexes to each individual (might not be necessary because the euro sim includes sexes?)
+# assign sexes to all individuals so that small subpops each get 1 male, 1 female
 individual_metadata = [ind.metadata for ind in tables.individuals]
-for md in individual_metadata:
-  md["sex"] = random.choice(
-    [pyslim.INDIVIDUAL_TYPE_FEMALE, pyslim.INDIVIDUAL_TYPE_MALE]
-  )
+for index, value in enumerate(individual_metadata, start=1):
+    if index % 2 == 0:
+        value["sex"] = pyslim.INDIVIDUAL_TYPE_FEMALE
+    else:
+        value["sex"] = pyslim.INDIVIDUAL_TYPE_MALE
 
-# not quite sure what this is doing, it is included in the recipe SLiM manual pg 487
+# not quite sure what this is specifically doing, it is included in the recipe SLiM manual pg 487
 ims = tables.individuals.metadata_schema
 tables.individuals.packset_metadata(
-  [ims.validate_and_encode_row(md) for md in individual_metadata]
+    [ims.validate_and_encode_row(md) for md in individual_metadata]
 )
 
 # convert the tables back into tree sequences, output new ts file
