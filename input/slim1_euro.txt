@@ -41,6 +41,7 @@ initialize()
 
 	// split one subpop off of p1, with 1 male and 1 female (for crosses)
 	sim.addSubpopSplit("p2", 2, p1, sexRatio = 0.5);
+			
 	
 	// save full output of euro sim, save euro treeseq output
 	

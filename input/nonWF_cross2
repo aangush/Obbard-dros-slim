@@ -4,7 +4,7 @@ initialize()
 initializeSLiMModelType("nonWF");
 initializeTreeSeq();
 initializeSex("A");
-initializeMutationType("m1", 0.5, "f", 0.0);
+initializeMutationType("m1", 0.5, "g", -0.03, 0.2);
 m1.convertToSubstitution = T;
 initializeGenomicElementType("g1", m1, 1.0);
 initializeGenomicElement(g1, 0, 99999);
@@ -16,10 +16,10 @@ initializeRecombinationRate(4e-8);
 
 reproduction() {
 for (i in 1:10)
-	p2.addCrossed(p2.individuals[0], p2.individuals[1], sex="M");
+	subpop.addCrossed(p2.individuals[1], p2.individuals[0], sex="M");
 	
 for (i in 1:10)
-	p2.addCrossed(p2.individuals[0], p3.individuals[1], sex="F");
+	subpop.addCrossed(p2.individuals[0], p3.individuals[1], sex="F");
 }
 
 1 early() {
