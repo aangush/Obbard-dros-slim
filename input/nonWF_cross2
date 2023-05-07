@@ -14,8 +14,8 @@ initializeRecombinationRate(4e-8);
 
 
 reproduction() {
-for (i in 1:9)
-	subpop.addCrossed(p2.individuals[0], p2.individuals[1], sex="M");
+	for (i in 1:500)
+		subpop.addCrossed(p2.individuals[0], p2.individuals[1], sex="M");
 	
 }
 
@@ -23,6 +23,9 @@ for (i in 1:9)
 sim.readFromPopulationFile("C://Users/aangu/Documents/Obbard_proj/output/euro_processed.trees");
 
 p1.removeSubpopulation();
+
+	for (i in 1:500)
+		sim.addSubpop("p3" + i, 0);
 
 }
 
