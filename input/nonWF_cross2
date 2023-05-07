@@ -1,4 +1,4 @@
-// DO NOT RUN THIS, IT WILL CRASH SLiM
+
 initialize() 
 {
 initializeSLiMModelType("nonWF");
@@ -13,9 +13,8 @@ initializeRecombinationRate(4e-8);
 }
 
 
-
 reproduction() {
-for (i in 1:10)
+for (i in 1:9)
 	subpop.addCrossed(p2.individuals[0], p2.individuals[1], sex="M");
 	
 }
@@ -23,11 +22,12 @@ for (i in 1:10)
 1 early() {
 sim.readFromPopulationFile("C://Users/aangu/Documents/Obbard_proj/output/euro_processed.trees");
 
+p1.removeSubpopulation();
+
 }
 
 late() {
-inds = p1.individuals;
-catn(sim.cycle + ": " + size(inds) + " (" + max(inds.age) + ")");
+
 sim.outputFull();
 }
 
