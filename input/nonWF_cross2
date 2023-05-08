@@ -24,9 +24,6 @@ sim.readFromPopulationFile("C://Users/aangu/Documents/Obbard_proj/output/euro_pr
 
 p1.removeSubpopulation();
 
-	for (i in 1:500)
-		sim.addSubpop("p3" + i, 0);
-
 }
 
 late() {
