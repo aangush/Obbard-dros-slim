@@ -17,21 +17,19 @@ reproduction() {
 	for (i in 1:20)
 		subpop.addCrossed(subpop.individuals[0], subpop.individuals[1], sex="M");
 		subpop.addCrossed(subpop.individuals[0], subpop.individuals[1], sex="F");
-		
 }
 
 1 early() {
 sim.readFromPopulationFile("C://Users/aangu/Documents/Obbard_proj/output/euro_processed.trees");
 
 p1.removeSubpopulation();
-
-}
-
-late() {
-
-sim.outputFull();
 }
 
 2 late() {
+
+if (sim.individuals.age > 0)
+	sim.killIndividuals();
+	
+
 sim.outputFull(ages=T);
 }
