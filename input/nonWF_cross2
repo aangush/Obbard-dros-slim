@@ -2,6 +2,7 @@
 initialize() 
 {
 initializeSLiMModelType("nonWF");
+defineConstant("K", 20000);
 initializeTreeSeq();
 initializeSex("A");
 initializeMutationType("m1", 0.5, "g", -0.03, 0.2);
@@ -14,22 +15,28 @@ initializeRecombinationRate(4e-8);
 
 
 reproduction() {
-	for (i in 1:20)
-		subpop.addCrossed(subpop.individuals[0], subpop.individuals[1], sex="M");
-		subpop.addCrossed(subpop.individuals[0], subpop.individuals[1], sex="F");
+
+// generate an offspring from each individual in each crossed subpop by 
+// crossing the two parents, add them to new "p3" subpop	
+// practically, create 1 M and 1 F offspring, add to cage "p3"
+p3.addCrossed(subpop.individuals[0], subpop.individuals[1], sex=NULL);
 }
 
 1 early() {
+
+// read in processed euro trees
 sim.readFromPopulationFile("C://Users/aangu/Documents/Obbard_proj/output/euro_processed.trees");
 
+// remove original euro subpop p1 -- not necessary anymore
 p1.removeSubpopulation();
+
+// create empty subpop p3 to be used for offspring of crosses
+// p3 is the cage
+sim.addSubpop("p3", 0);
+
 }
 
 2 late() {
-
-if (sim.individuals.age > 0)
-	sim.killIndividuals();
-	
-
+		
 sim.outputFull(ages=T);
 }
