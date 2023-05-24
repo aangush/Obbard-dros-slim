@@ -1,0 +1,36 @@
+
+initialize() 
+{
+initializeSLiMModelType("nonWF");
+initializeTreeSeq();
+initializeSex("A");
+initializeMutationType("m1", 0.5, "g", -0.03, 0.2);
+m1.convertToSubstitution = T;
+initializeGenomicElementType("g1", m1, 1.0);
+initializeGenomicElement(g1, 0, 99999);
+initializeMutationRate(2.5e-9);
+initializeRecombinationRate(4e-8);
+}
+
+
+reproduction() {
+
+p3.addCrossed(p3.sampleIndividuals(sex="M"), p3.sampleIndividuals(sex="F"));
+
+}
+
+1 early() {
+
+// read in results of cross
+sim.readFromPopulationFile("C://Users/aangu/Documents/Obbard_proj/output/cross_out.txt");
+
+// set carrying capacity of cage p3
+p3.setValue("K", 20000);
+
+
+}
+
+6 late() {
+		
+sim.outputFull();
+}
