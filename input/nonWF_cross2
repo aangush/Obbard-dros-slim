@@ -2,7 +2,6 @@
 initialize() 
 {
 initializeSLiMModelType("nonWF");
-defineConstant("K", 20000);
 initializeTreeSeq();
 initializeSex("A");
 initializeMutationType("m1", 0.5, "g", -0.03, 0.2);
@@ -38,5 +37,5 @@ sim.addSubpop("p3", 0);
 
 2 late() {
 		
-sim.outputFull(ages=T);
+sim.outputFull("C://Users/aangu/Documents/Obbard_proj/output/cross_out.txt", ages=T);
 }
