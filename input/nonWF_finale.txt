@@ -15,7 +15,7 @@ initializeRecombinationRate(4e-8);
 
 reproduction() {
 
-p3.addCrossed(p3.sampleIndividuals(sex="M"), p3.sampleIndividuals(sex="F"));
+p3.addCrossed(p3.sampleIndividuals(1, sex="F"), p3.sampleIndividuals(1, sex="M"));
 
 }
 

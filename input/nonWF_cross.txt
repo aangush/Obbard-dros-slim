@@ -37,5 +37,5 @@ sim.addSubpop("p3", 0);
 
 2 late() {
 		
-sim.outputFull("C://Users/aangu/Documents/Obbard_proj/output/cross_out.txt", ages=T);
+sim.outputFull(ages=T);
 }
