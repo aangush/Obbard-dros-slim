@@ -62,16 +62,9 @@ for (individual in p4.individuals)
 }
 
 
-
-// The output code below can be used to check output of cross
-// 2 late() {
-// sim.outputFull(ages=T);
-// }
-
-
 9 late() {
 
-// kill off original parents
+// kill off original parents from cross
 for (individual in p3.individuals)
 	if (individual.age == 7)
 		sim.killIndividuals(individual);
