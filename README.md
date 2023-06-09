@@ -35,8 +35,13 @@ This file contains the nonWF SLiM simulation that models the Drosophila experime
 
 * this is a **non-WF** simulation, with separate sexes and one type of selected mutation, as before
 * This simulation loads in the processed tree sequences from the euro simulation `euro_processed.trees` as processed by the `euro_convert.py` python file
-* 
+* **Remember**, we now have 500 subpops of size 2, with 1 female and 1 male loaded into the simulation
+* During ticks 1-2, the cross occurs. Reproduction occurs once for each existing individual (twice in total, because each subpop has 2 individuals)
+* 1000 offspring are generated from the cross (1 male and 1 female from each of the 500 subpops of 2 parents), and added to a new subpop `p3`, which is the 'cage' 
+* These 1000 offspring, now parents in the cage, are allowed to reproduce for 6 ticks, then are killed off
 
+This simulation utilizes another subpopulation p4 to represent non-reproducing juveniles. When the adults in the cage (p3) reproduce, their offspring directly enter p4 until they reach age 6. As soon as they are older than 6, the juveniles are moved to p3, where they are now able to reproduce
 
+For now, this simulation only contains random, density dependent mortality centered around the carrying capacities set for each subpopulation (p3 and p4)
 
-
+Currently, this simulation runs to 75 ticks before stopping.
