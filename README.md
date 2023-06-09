@@ -2,12 +2,12 @@
 
 This is the repo for a SLiM evolutionary genetics simulation project
 
-### Overview ###
+
 Below is a description of each part of this project and what it does, I will do my best to keep this overview updated as I add new features.
 
 The two important directories are `input` and `output`. `input` contains several SLiM simulation scripts (.txt or .slim files), as well as supporting python scripts, and `output` contains several different types of outputs from different scripts.
 
-##### WF_euro.txt #####
+### WF_euro.txt ###
 
 The file `WF_euro.txt` is the SLiM script that is run to simulate the British/European Drosophila population. Many of the parameters set in this file can be changed (and probably will be when it is actually used), but here is a basic overview:
 
@@ -18,7 +18,7 @@ The file `WF_euro.txt` is the SLiM script that is run to simulate the British/Eu
 One slight issue with this file is that when the 500 subpops are split off from the main p1 to form the cross pairs, it is done **with** replacement
 
 
-##### euro_convert.py #####
+### euro_convert.py ###
 
 This python file is used to:
 
@@ -27,6 +27,15 @@ This python file is used to:
 
 This file uses the python packages `pyslim` and `tskit`, and loads the tree sequence `euro_trees.trees` as an input
 The output of this file is the `euro_processed.trees` tree sequence file, which is now ready to be used in a nonWF simulation 
+
+
+### nonWF_cross.txt ###
+
+This file contains the nonWF SLiM simulation that models the Drosophila experiments painstakingly undertaken by members of the Obbard lab. As with the WF simulation, this is a basic overview, and there is more to add to this file
+
+* this is a **non-WF** simulation, with separate sexes and one type of selected mutation, as before
+* This simulation loads in the processed tree sequences from the euro simulation `euro_processed.trees` as processed by the `euro_convert.py` python file
+* 
 
 
 
