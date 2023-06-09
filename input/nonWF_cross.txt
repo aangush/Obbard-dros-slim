@@ -23,7 +23,7 @@ p3.addCrossed(subpop.individuals[0], subpop.individuals[1], sex=NULL);
 
 
 // this reproduction is used after the cross for remainder of simulation
-3:15 reproduction(p3) {
+3:75 reproduction(p3) {
 
 // individuals in p3 can reproduce, offspring go into p4 for aging
 
@@ -55,12 +55,15 @@ early() {
 	K = p3.getValue("K");
 	p3.fitnessScaling = K / p3.individualCount;
 	
+// density-dependent regulation for p4 according to K
+	K = p4.getValue("K");
+	p4.fitnessScaling = K / p4.individualCount;
+	
 // when juveniles are older than age 6, move them into p3 to reproduce	
 for (individual in p4.individuals)
 	if (individual.age > 6)
 		p3.takeMigrants(individual);
 }
-
 
 9 late() {
 
@@ -71,6 +74,6 @@ for (individual in p3.individuals)
 }
 
 
-15 late(){
-//sim.outputFull();
+75 late(){
+sim.outputFull();
 }
