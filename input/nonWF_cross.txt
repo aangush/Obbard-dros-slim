@@ -72,5 +72,5 @@ for (individual in p3.individuals)
 
 
 15 late(){
-sim.outputFull();
+//sim.outputFull();
 }
