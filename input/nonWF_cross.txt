@@ -47,6 +47,9 @@ sim.addSubpop("p3", 0).setValue("K", 20000);
 // create empty subpop p4 to be used for non-reproductive juveniles
 // set carrying capacity "K" as 25000
 sim.addSubpop("p4", 0).setValue("K", 25000);
+
+// KEEP-----------------
+//sim.outputFull("C://Users/aangu/Documents/Obbard_proj/FINAL_OUT/1-pre_cross.txt", ages=T);
 }
 
 
@@ -65,6 +68,10 @@ for (individual in p4.individuals)
 		p3.takeMigrants(individual);
 }
 
+3 early() {
+sim.outputFull();
+}
+
 9 late() {
 
 // kill off original parents from cross
@@ -75,5 +82,5 @@ for (individual in p3.individuals)
 
 
 75 late(){
-sim.outputFull();
+// sim.outputFull();
 }
