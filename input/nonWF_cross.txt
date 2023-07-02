@@ -48,8 +48,6 @@ sim.addSubpop("p3", 0).setValue("K", 20000);
 // set carrying capacity "K" as 25000
 sim.addSubpop("p4", 0).setValue("K", 25000);
 
-// KEEP-----------------
-//sim.outputFull("C://Users/aangu/Documents/Obbard_proj/FINAL_OUT/1-pre_cross.txt", ages=T);
 }
 
 
@@ -68,8 +66,12 @@ for (individual in p4.individuals)
 		p3.takeMigrants(individual);
 }
 
+2 late() {
+sim.outputFull("C://Users/aangu/Documents/Obbard_proj/FINAL_OUT/OG_parents.txt", ages=T);
+}
+
 3 early() {
-sim.outputFull();
+// sim.outputFull();
 }
 
 9 late() {
