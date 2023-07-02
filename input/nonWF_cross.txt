@@ -1,3 +1,7 @@
+// sometimes when running this script, I receive an error message:
+// "subscript 1 out of range" -- not sure what causes this, usually fixed after
+// recycling experiment and re-running script
+
 
 initialize() 
 {
@@ -76,13 +80,15 @@ sim.outputFull("C://Users/aangu/Documents/Obbard_proj/FINAL_OUT/OG_parents.txt",
 
 9 late() {
 
-// kill off original parents from cross
+// kill off original parents from cross, only happens once
 for (individual in p3.individuals)
 	if (individual.age == 7)
 		sim.killIndividuals(individual);
+		
+sim.outputFull("C://Users/aangu/Documents/Obbard_proj/FINAL_OUT/F1_noparents.txt", ages=T);
 }
 
 
 75 late(){
-// sim.outputFull();
+sim.outputFull("C://Users/aangu/Documents/Obbard_proj/FINAL_OUT/exp_END.txt", ages=T);
 }
